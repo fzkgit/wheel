@@ -1,5 +1,5 @@
 // 设置不同版本域名 测试版本  上线版本
-const host = /localhost/.test(window.location.host) ? 'http://baojia-test.chelun.com' : 'https://baojia.chelun.com';
+const host = 'https://baojia.chelun.com'
 
 function getWheelData(url, method = 'GET', data = {}) {
     let params = {
