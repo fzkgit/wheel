@@ -20,9 +20,9 @@
             @touchmove='touchmove'>{{key}}</span>
     </div>
     <div :class="isShow?'makeList makeList-active':'makeList'"
-         @touchstart.stop='makeListTouchstart' 
-         @touchmove.stop='makeListTouchmove' 
-         @touchend.stop='makeListTouchend' 
+         @touchstart='makeListTouchstart' 
+         @touchmove='makeListTouchmove' 
+         @touchend='makeListTouchend' 
          ref='makeList'>
       <div class="makeList-every" v-for='(item,index) in MakeList' :key="index">
         <h6 @click='makeListHidden'>{{item.GroupName}}</h6>
@@ -134,21 +134,6 @@
         */
         this.$refs.makeList.style.transform=`translateX(100%)`
         this.isShow = false
-      },
-      jumpToDetail(e){
-        /**
-          *  木有用的操作
-        */
-        // let id = 0;
-        // if(e.target.nodeName=="H5" || e.target.nodeName == "SPAN"){
-        //   id =  e.target.parentNode.parentNode.dataset.id
-        // }
-        // if(e.target.nodeName=="IMG" || e.target.nodeName == "DIV"){
-        //   id =  e.target.parentNode.dataset.id
-        // }
-        // if(e.target.nodeName=="LI"){
-        //   id =  e.target.dataset.id
-        // }
       }
     },
     mounted() {

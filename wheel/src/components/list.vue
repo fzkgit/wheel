@@ -66,13 +66,12 @@
       button{
         border: none;
         border-top: 1px solid #eee;
-        width: 110%;
-        height: .8rem;
-        font-size: .32rem;
+        width: 100%;
+        height:45px;
+        font-size: 16px;
         color: #00afff;
         background: #fff;
         font-weight: 500;
-        margin-left: -.3rem;
       }
     }
   }
