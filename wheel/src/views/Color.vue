@@ -48,6 +48,7 @@
             ColorID:id * 1
           })
         })
+        window.history.go(-2)
       }
     },
     updated() {

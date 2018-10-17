@@ -56,9 +56,11 @@
             CarID:id * 1
           })
         })
+        window.history.go(-2)
       }
     },
     mounted() {
+      console.log(this.$route)
       this.getDetailArr(this.$route.query.SerialID)
     },
   }
