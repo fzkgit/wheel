@@ -1,5 +1,5 @@
 <template>
-  <div class="recommend" @click="heartChange">
+  <div class="recommend" @click="heartChange" ref='recommend'>
     <div :class="heartShow?'heart heart-active':'heart'" ref='heart' v-for="(item,index) in arr" ::key="index">
       {{item}}
     </div>
@@ -15,9 +15,11 @@
     </div>
     <Aside/>
     <Talk/>
-    <span v-for="(item,index) in data" :key="index" :class="index==idx?'Barrage':'hidden'" :ref="index==idx?'Barrage':''">
-      {{item.content}}{{Idx}}
-    </span>
+    <div>
+      <span v-for="(item,index) in data" :key="index" :class="index==idx?'Barrage':'hidden'" :ref="index==idx?'Barrage':''">
+        {{item.content}}{{Idx}}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -63,8 +65,10 @@
           this.$nextTick(()=>{
             this.$refs.heart[num].style.left = e.clientX - this.$refs.heart[num].getBoundingClientRect().width / 2 + 'px'
             this.$refs.heart[num].style.top = e.clientY - 45 - this.$refs.heart[num].getBoundingClientRect().height / 2 + 'px'
+            this.$refs.heart[num].addEventListener('animationend',()=>{
+              this.$refs.heart[num].parentNode.removeChild(this.$refs.heart[num])
+            })
           })
-          
         }else{
           this.firstClick = newData
         }
