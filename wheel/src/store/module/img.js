@@ -6,7 +6,8 @@ const state = {
   isShow: false,
   list: [],
   ModelImageYearColor: {},
-  swiperIsShow:false
+  swiperIsShow:false,
+  obj: {}
 }
 
 const mutations = {
@@ -16,14 +17,17 @@ const mutations = {
   updateCategoryImgList(state,payload){
     state.CategoryImgList = payload
   },
-  updateIsShow(state){
-    state.isShow = !state.isShow
+  updateIsShow(state,payload){
+    state.isShow = payload
   },
   updateModelImageYearColor(state,payload){
     state.ModelImageYearColor = payload
   },
   updateswiperIsShow(state){
     state.swiperIsShow = !state.swiperIsShow
+  },
+  updateObj(state,payload){
+    state.obj = payload
   }
 }
 

@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: './dist/',
+    publicPath: '/dist/',
     filename: 'build.js'
   },
   module: {
@@ -61,7 +61,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|ttf|woff)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
@@ -80,12 +80,20 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     overlay: true,
+    port: 8001,
     proxy: {
       '/api':{
         target: 'http://localhost:8091/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'
+        }
+      },
+      '/apc':{
+        target: 'http://localhost:8888/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/apc': '/'
         }
       }
     }

@@ -10,6 +10,14 @@ import Imgs from './module/img'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {
+    showLoading: true
+  },
+  mutations: {
+    updateShowLoading(state, payload){
+      state.showLoading = payload;
+    }
+  },
   modules: {
     Index,
     Detail,

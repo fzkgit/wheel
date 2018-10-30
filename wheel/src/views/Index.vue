@@ -16,7 +16,7 @@
     <div class="nav-list">
       <span @touchstart='touchstart(0,$event)'>#</span>
       <span v-for="(value,key,index) in MasterBrandList" :key="index"
-            @touchstart='touchstart(index,$event)' 
+            @touchstart='touchstart(index,$event)'
             @touchmove='touchmove'>{{key}}</span>
     </div>
     <div :class="isShow?'makeList makeList-active':'makeList'"
@@ -37,14 +37,12 @@
         </ul>
       </div>
     </div>
-    <div :class='ishidden?"ishidden":""'><Loading/></div>
   </div> 
 </template>
 
 <script>
   import {mapState,mapActions,mapMutations} from 'vuex'
   import BScroll from 'better-scroll'
-  import Loading from '../components/Loading'
   import {lazyLoad} from '../utils/lazyLoading'
   export default {
     name:'Index',
@@ -57,14 +55,10 @@
         makeListId:0
       }
     },
-    components: {
-      Loading,
-    },
     computed: {
       ...mapState({
         MasterBrandList: state => state.Index.MasterBrandList,
-        MakeList: state => state.Index.MakeList,
-        ishidden: state => state.Index.ishidden
+        MakeList: state => state.Index.MakeList
       })
     },
     methods: {
@@ -103,6 +97,9 @@
           * 好处1：减少绑定次数 只绑定一次
           * 好处2：加载更多时 加载内容不必再绑定事件
         */
+        console.log(1)
+        // 添加事件统计
+        _hmt.push(['_trackEvent','汽车报价','tap','品牌点击'])
         this.makeListAsync(id)
         this.isShow = true
       },

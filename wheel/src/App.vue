@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view></router-view>
+    <Loading/>
+    <Login/>
   </div>
 </template>
 
 <script>
+import Loading from './components/Loading'
+import Login from './components/Login'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Loading,
+    Login
+  }
 }
 </script>
 

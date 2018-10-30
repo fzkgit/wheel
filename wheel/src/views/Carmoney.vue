@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import {mapState,mapActions} from 'vuex'
+  import {mapState,mapActions,mapMutations} from 'vuex'
   export default {
     name: 'Carmoney',
     data(){
@@ -46,21 +46,24 @@
       ...mapActions({
         getDetailArr: 'Detail/getDetailArr'
       }),
+      ...mapMutations({
+        updateObj:'Imgs/updateObj'
+      }),
       changeChild(id){
         this.id = id
       },
       carmoneyChange(id){
+        let obj = Object.assign(this.$route.query,{
+          CarID:id * 1
+        })
         this.$router.push({
-          path:'/Imgs',
-          query: Object.assign(this.$route.query,{
-            CarID:id * 1
-          })
+          path:'/Imgs'
         })
         window.history.go(-2)
+        this.updateObj(obj)
       }
     },
     mounted() {
-      console.log(this.$route)
       this.getDetailArr(this.$route.query.SerialID)
     },
   }

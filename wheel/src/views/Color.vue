@@ -1,7 +1,7 @@
 <template>
   <div class='color'>
     <div class="color-header">
-      <span>全部颜色</span>
+      <span @click="returnImgs">全部颜色</span>
     </div>
     <div>
       <div class="color-year">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import {mapState,mapActions} from 'vuex'
+  import {mapState,mapActions,mapMutations} from 'vuex'
   export default {
     name: 'color',
     data() {
@@ -38,17 +38,26 @@
       ...mapActions({
         sendModelImageYearColor: 'Imgs/sendModelImageYearColor',
       }),
+      ...mapMutations({
+        updateObj:'Imgs/updateObj'
+      }),
+      returnImgs(){
+        window.history.back()
+        this.updateObj({SerialID:this.$route.query.SerialID})
+      },
       renderChild(key){
         this.redirectArr = this.ModelImageYearColor[key]
       },
       DetermineTheColor(id){
+        let obj = Object.assign(this.$route.query,{
+          ColorID:id * 1
+        })
+
         this.$router.push({
-          path:'/Imgs',
-          query:Object.assign(this.$route.query,{
-            ColorID:id * 1
-          })
+          path:'/Imgs'
         })
         window.history.go(-2)
+        this.updateObj(obj)
       }
     },
     updated() {

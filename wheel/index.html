@@ -11,11 +11,24 @@
         };
         (window.onload = f) && (window.onresize = f) && f()
     </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd118cd65b5327e8f488b47253c84280";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script src="https://browser.sentry-cdn.com/4.1.1/bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+        Sentry.init({ dsn: 'https://503b6e8eccf448698cc592ee72a1816c@sentry.io/1303640' });
+    </script>
 </head>
 
 <body>
     <div id="app"></div>
-    <script src="./dist/build.js"></script>
+    <script src="/dist/build.js"></script>
 </body>
 
 </html>

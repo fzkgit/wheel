@@ -1,10 +1,10 @@
 <template>
   <div class='Imgs'>
     <div class="Imgs-header">
-      <router-link tag="p" :to="{ path: '/Color', query: this.$route.query}" class="car-detail-banner">
+      <router-link tag="p" :to="{ path: '/Color', query: this.obj}" class="car-detail-banner">
         <span>颜色</span>
       </router-link>
-      <router-link tag="p" :to="{ path: '/Carmoney' , query: this.$route.query}" class="car-detail-banner">
+      <router-link tag="p" :to="{ path: '/Carmoney' , query: this.obj}" class="car-detail-banner">
         <span>车款</span>
       </router-link>
     </div>
@@ -46,7 +46,8 @@
     computed: {
       ...mapState({
         ImageList: state => state.Imgs.ImageList,
-        isShow: state => state.Imgs.isShow
+        isShow: state => state.Imgs.isShow,
+        obj: state => state.Imgs.obj,
       }),
     },
     methods: {
@@ -55,16 +56,22 @@
         sendCategoryImgList: 'Imgs/sendCategoryImgList'
       }),
       ...mapMutations({
-        updateIsShow: 'Imgs/updateIsShow'
+        updateIsShow: 'Imgs/updateIsShow',
+        updateObj:'Imgs/updateObj'
       }),
       ImgAll(id){
-        this.updateIsShow()
+        this.updateIsShow(true)
         this.ImageID = id
         this.sendCategoryImgList({SerialID:this.$route.query.SerialID,ImageID:id})
       }
     },
     mounted() {
-      this.sendImageList(this.$route.query)
+      if(!this.obj.SerialID){
+        this.sendImageList(this.$route.query)
+      }else{
+        this.sendImageList(this.obj)
+      }
+      this.updateIsShow(false)
     },
   }
 </script>

@@ -1,11 +1,16 @@
 <template>
-  <div class='loading'>
+  <div v-show="isShow" class='loading'>
     <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539078424942&di=4a1449b6b67dbf6f910d67ae4a216102&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F011d14554251780000019ae94718a3.jpg" alt="">
   </div>
 </template>
 <script>
   export default {
     name: 'Loading',
+    computed: {
+      isShow(){
+        return this.$store.state.showLoading
+      }
+    }
   }
 </script>
 <style lang="scss">

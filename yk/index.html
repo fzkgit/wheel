@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>yk</title>
+    <script>
+        function f() {
+            document.documentElement.style.fontSize = (window.innerWidth) / 750 * 100 + 'px';
+        };
+        (window.onload = f) && (window.onresize = f) && f()
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?a169a3f6dcb23b7529f63cd99fa26435";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+ 
+<body>
+    <div id="app"></div>
+    <script src="./dist/build.js"></script>
+</body>
+
+</html>

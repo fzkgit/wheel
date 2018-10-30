@@ -3,8 +3,10 @@
     <div class="car-detail">
       <div class="car-detail-content">
         <router-link tag="div" :to="{ path: '/Imgs', query: { SerialID: this.$route.query.id}}" class="car-detail-banner">
-          <img :src="detailArr.CoverPhoto" alt="">
-          <span>{{detailArr.pic_group_count}}张照片</span>
+          <div @click='changeSeralID'>
+            <img :src="detailArr.CoverPhoto" alt="">
+            <span>{{detailArr.pic_group_count}}张照片</span>
+          </div>
         </router-link>
         <div class="car-detail-info">
           <div class="car-detail-info-left">
@@ -36,7 +38,7 @@
 </template>
 
 <script>
-import {mapActions,mapState} from 'vuex'
+import {mapActions,mapState,mapMutations} from 'vuex'
 import Loading from '../components/Loading'
 import List from '../components/list'
 export default {
@@ -65,7 +67,7 @@ export default {
     },
     carId(){
       let arr = this.detailArr.BottomEntranceLink.split("/");
-      let num = arr[arr.length-1]*1
+      let num = arr[arr.length-1] * 1
       return num
     }
   },
@@ -73,8 +75,17 @@ export default {
     ...mapActions({
       getDetailArr: 'Detail/getDetailArr'
     }),
+    ...mapMutations({
+      updateObj:'Imgs/updateObj',
+    }),
     changeList(i){
       this.id = i
+    },
+    changeSeralID(){
+      let obj = {
+        SerialID: this.$route.query.id
+      }
+      this.updateObj(obj)
     }
   },
   mounted() {

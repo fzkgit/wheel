@@ -87,7 +87,6 @@ export let getCategoryImgList = (param)=>{
 }
 
 export let getImageList = (param) => {
-    console.log(param)
     let search = ``;
     for(let i in param){
         search += `&${i}=${param[i]}`;
